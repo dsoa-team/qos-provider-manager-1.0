@@ -24,7 +24,7 @@ import br.ufpe.cin.dsoa.manager.metadata.Profile;
 import br.ufpe.cin.dsoa.manager.metadata.ProviderMetadata;
 import br.ufpe.cin.dsoa.manager.metadata.Resource;
 
-public class PojoProxy implements InvocationHandler, ServiceTrackerCustomizer,
+public class ProviderManager implements InvocationHandler, ServiceTrackerCustomizer,
 		NotificationListener {
 
 	private InstanceManager m_manager;
@@ -40,7 +40,7 @@ public class PojoProxy implements InvocationHandler, ServiceTrackerCustomizer,
 
 	private static String OBJECT_NAME = "jmx.monitor:Type=PlatformMonitor";
 
-	public PojoProxy(InstanceManager m_manager, ProviderMetadata p_metadata) {
+	public ProviderManager(InstanceManager m_manager, ProviderMetadata p_metadata) {
 
 		this.m_manager = m_manager;
 		this.p_metadata = p_metadata;
@@ -88,7 +88,7 @@ public class PojoProxy implements InvocationHandler, ServiceTrackerCustomizer,
 			ProviderMetadata p_metadata) {
 
 		return Proxy.newProxyInstance(m_manager.getClazz().getClassLoader(),
-				PojoProxy.getSpecifications(m_manager), new PojoProxy(
+				ProviderManager.getSpecifications(m_manager), new ProviderManager(
 						m_manager, p_metadata));
 	}
 

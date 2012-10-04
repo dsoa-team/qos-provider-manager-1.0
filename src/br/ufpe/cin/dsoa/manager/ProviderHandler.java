@@ -12,7 +12,7 @@ import org.osgi.service.cm.ManagedService;
 
 import br.ufpe.cin.dsoa.manager.metadata.ProviderMetadata;
 
-public class ProviderManager extends PrimitiveHandler implements ManagedService {
+public class ProviderHandler extends PrimitiveHandler implements ManagedService {
 
 	private ServiceRegistration registration;
 	private ProviderMetadata p_metadata;

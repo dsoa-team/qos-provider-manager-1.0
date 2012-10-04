@@ -7,7 +7,7 @@ import org.apache.felix.ipojo.handlers.providedservice.CreationStrategy;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.ServiceRegistration;
 
-import br.ufpe.cin.dsoa.manager.ProviderManager;
+import br.ufpe.cin.dsoa.manager.ProviderHandler;
 import br.ufpe.cin.dsoa.manager.metadata.ProviderMetadata;
 
 public class Strategy extends CreationStrategy {
@@ -16,7 +16,7 @@ public class Strategy extends CreationStrategy {
 	private ProviderMetadata p_metadata;
 
 	public Object getService(Bundle bundle, ServiceRegistration registration) {
-		return PojoProxy.createProxy(m_manager, p_metadata);
+		return ProviderManager.createProxy(m_manager, p_metadata);
 	}
 
 	public void ungetService(Bundle bundle, ServiceRegistration registration,
@@ -29,7 +29,7 @@ public class Strategy extends CreationStrategy {
 
 		m_manager = arg0;
 
-		ProviderManager providerManager = (ProviderManager) m_manager
+		ProviderHandler providerManager = (ProviderHandler) m_manager
 				.getHandler("br.ufpe.cin.dsoa.manager:provider-manager");
 
 		p_metadata = providerManager.getProviderMetadata();
